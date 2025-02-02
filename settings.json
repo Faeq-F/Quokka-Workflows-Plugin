@@ -1,0 +1,10 @@
+{
+  "Signifier": "| ",
+  "FuzzySearchThreshold": 5,
+  "AllWorkflowsCommand": "All Workflows",
+  "Workflows": [
+    [ "FirstWorkflowCommand", "? first", "? workflow", "? command" ],
+    [ "SecondWorkflowCommand", "? second workflow command" ],
+    [ "ThirdWorkflowCommand", "char lambda", "? you copied a lambda" ]
+  ]
+}
