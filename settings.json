@@ -1,6 +1,6 @@
 {
   "Signifier": "| ",
-  "FuzzySearchThreshold": 5,
+  "FuzzySearchThreshold": 15,
   "AllWorkflowsCommand": "All Workflows",
   "Workflows": [
     [ "FirstWorkflowCommand", "? first", "? workflow", "? command" ],

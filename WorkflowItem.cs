@@ -18,7 +18,11 @@ namespace Plugin_Workflows {
     public override void Execute() {
       foreach (string command in this.flow) {
         Quokka.SearchWindow.ProduceItems(command)[0].Execute();
+        //items (most likely) close the search window on execute
+        App.Current.MainWindow = new SearchWindow();
+        App.Current.MainWindow.Show();
       }
+      //close final window that was launched
       App.Current.MainWindow.Close();
     }
   }
