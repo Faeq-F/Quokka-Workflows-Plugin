@@ -11,11 +11,10 @@
     /// <summary>
     ///   The threshold for when to consider a workflow
     ///   command is similar enough to the query for it to be
-    ///   displayed (defaults to 15). Currently uses the
-    ///   Levenshtein distance; the larger the number, the
-    ///   bigger the difference (being matched).
+    ///   displayed (defaults to 98). The larger the number, the
+    ///   more similar it needs to be.
     /// </summary>
-    public int FuzzySearchThreshold { get; set; } = 15;
+    public int FuzzySearchThreshold { get; set; } = 98;
     /// <summary>
     /// The command to list all Workflows (defaults to "All Workflows")
     /// </summary>

@@ -29,13 +29,10 @@ namespace Plugin_Workflows {
 
 
     private List<ListItem> createItems(string query) {
-      List<ListItem> items = new List<ListItem>() { };
-      foreach (List<string> workflow in PluginSettings.Workflows) {
-        if (FuzzySearch.LD(workflow[0], query) < PluginSettings.FuzzySearchThreshold || workflow[0].Contains(query, StringComparison.OrdinalIgnoreCase)) {
-          items.Add(new Workflow(workflow[0], workflow.Skip(1).ToList()));
-        }
-      }
-      return items;
+      return FuzzySearch.searchAll(query, PluginSettings.Workflows.Select(x => x[0]).ToList(), PluginSettings.FuzzySearchThreshold)
+        // After getting the top results, make them ListItems
+        .Select(x => (ListItem) new Workflow(PluginSettings.Workflows[x.Index][0], PluginSettings.Workflows[x.Index].Skip(1).ToList())
+      ).ToList();
     }
 
     /// <summary>
@@ -103,7 +100,7 @@ namespace Plugin_Workflows {
     /// <returns>A search item to open the search in the user's browser</returns>
     public override List<ListItem> OnSignifier(string command) {
       command = command.Substring(PluginSettings.Signifier.Length);
-      return createItems(command);
+      return FuzzySearch.sort(command, createItems(command)).ToList();
     }
 
   }
